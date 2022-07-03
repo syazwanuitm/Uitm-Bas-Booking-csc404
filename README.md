@@ -6,5 +6,5 @@ CSC404 Mini assignment;
 
 ## Screenshots
 
-![App Screenshot](https://ibb.co/z8hfGnx)
+![App Screenshot](https://i.ibb.co/n3skzgm/output-Bus.png)
 
