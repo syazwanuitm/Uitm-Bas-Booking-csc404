@@ -1,6 +1,3 @@
-// busBooking.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 using namespace std;
 
@@ -113,7 +110,7 @@ passenger busPassenger[100] = {};
 // This function will loop to enter the passenger booking
 void enterPassenger()
 {
-    for (int i = 0; i < 200; i++)
+    for (int i = 0; i < 100; i++)
     {
         char act;
 
