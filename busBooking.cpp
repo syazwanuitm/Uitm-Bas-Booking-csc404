@@ -4,16 +4,12 @@
 #include <iostream>
 using namespace std;
 
-
-
 struct bus {
     int busNo;
     int departFromCityId;
     int arrivalToCityId;
     int totalSeat;
 };
-
-
 
 struct city {
     int citiId;
@@ -26,9 +22,6 @@ struct schedule {
     string date;
 };
 
-
-
-
 struct passenger {
     int passengerId;
     string passengerName;
@@ -37,15 +30,13 @@ struct passenger {
 };
 
 
-
-
-
-
+// This function will print introduction on the system
 void introduction()
 {
     cout << "                      Hello                            \n\n         Welcome to UITM bus booking system         \n \n \n";
 }
 
+// This function will print all schedule detail
 void showSchedule(city myCity[], bus myBus[], schedule mySchedule[])
 {
     for (int i = 0; i < 5; i++)
@@ -61,7 +52,7 @@ void showSchedule(city myCity[], bus myBus[], schedule mySchedule[])
     }
 }
 
-
+// This function received user index number and get input from user to book and return the pessenger object
 passenger KeyInPassenger(int currentUser)
 {
     passenger myPassenger;
@@ -76,7 +67,10 @@ passenger KeyInPassenger(int currentUser)
     return myPassenger;
 }
 
+// Initilize passenger object
 passenger busPassenger[100] = {};
+
+// This function will loop to enter the passenger booking
 void enterPassenger()
 {
     for (int i = 0; i < 200; i++)
@@ -103,9 +97,6 @@ bus myBus[5] = { {1,1,2,20},{2,1,3,20},{3,1,4,20},{4,1,5,20},{5,1,3,20} };
 
 //Seeding schedule
 schedule mySchedule[5] = { {1,1,"12 July 2022"},{2,2,"19 July 2022"},{3,3,"17 July 2022"},{4,4,"16 July 2022"},{5,5,"15 July 2022"} };
-
-
-
 
 
 int main()
