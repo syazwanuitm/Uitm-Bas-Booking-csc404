@@ -30,6 +30,18 @@ struct passenger {
 };
 
 
+//Seeding city
+city myCity[5] = { {1,"Terminal Kuala Lumpur"},{2,"Terminal Johor"},{3,"Terminal Perak"},{4,"Terminal Selangor"},{5,"Terminal Perlis"} };
+
+
+//Seeding bus
+bus myBus[5] = { {1,1,2,20},{2,1,3,20},{3,1,4,20},{4,1,5,20},{5,1,3,20} };
+
+//Seeding schedule
+schedule mySchedule[5] = { {1,1,"12 July 2022"},{2,2,"19 July 2022"},{3,3,"17 July 2022"},{4,4,"16 July 2022"},{5,5,"15 July 2022"} };
+
+
+
 // This function will print introduction on the system
 void introduction()
 {
@@ -51,6 +63,34 @@ void showSchedule(city myCity[], bus myBus[], schedule mySchedule[])
         cout << " Bus total seat: " << selectedBus.totalSeat << "\n\n\n";
     }
 }
+
+
+// This function will display all schedule with passenger detail
+void showScheduleWithPassengerDetail(city myCity[], bus myBus[], schedule mySchedule[], passenger passengers[])
+{
+    for (int i = 0; i < 5; i++)
+    {
+        int busNo = mySchedule[i].busNo;
+        bus selectedBus = myBus[busNo - 1];
+        city departure = myCity[selectedBus.departFromCityId - 1];
+        city arrival = myCity[selectedBus.arrivalToCityId - 1];
+
+        cout << " Bus no: " << mySchedule[i].busNo << "    Date: " << mySchedule[i].date << "\n";
+        cout << " Departpure from: " << departure.cityName << "    Arrival: " << arrival.cityName << "\n";
+        cout << "\n   Passenger List   \n";
+        for (int i = 0; i < 100; i++)
+        {
+            if (passengers[i].busNo == busNo)
+            {
+                cout << "  Passenger name: " << passengers[i].passengerName << "\n";
+                cout << "  Passenger age: " << passengers[i].age << "\n End Passenger ID : " << passengers[i].passengerId << "\n\n\n";              
+            }
+        }
+
+    }
+}
+
+
 
 // This function received user index number and get input from user to book and return the pessenger object
 passenger KeyInPassenger(int currentUser)
@@ -79,24 +119,16 @@ void enterPassenger()
 
         busPassenger[i] = KeyInPassenger(i);
 
-        cout << "\n  Do you want to continue add more passenger? Enter (Y) to add more and (C) to continue";
+        cout << "\n  Do you want to continue add more passenger? Enter (Y) to add more and (C) to continue\n";
         cin >> act;
         if (act == 'C')
         {
+            // If user choose "C" system will show schedule with passenger info
+            showScheduleWithPassengerDetail(myCity, myBus, mySchedule, busPassenger);
             return;
         }
     }
 }
-
-//Seeding city
-city myCity[5] = { {1,"Terminal Kuala Lumpur"},{2,"Terminal Johor"},{3,"Terminal Perak"},{4,"Terminal Selangor"},{5,"Terminal Perlis"} };
-
-
-//Seeding bus
-bus myBus[5] = { {1,1,2,20},{2,1,3,20},{3,1,4,20},{4,1,5,20},{5,1,3,20} };
-
-//Seeding schedule
-schedule mySchedule[5] = { {1,1,"12 July 2022"},{2,2,"19 July 2022"},{3,3,"17 July 2022"},{4,4,"16 July 2022"},{5,5,"15 July 2022"} };
 
 
 int main()
@@ -108,9 +140,7 @@ int main()
     showSchedule(myCity, myBus, mySchedule);
 
     enterPassenger();
-    
-
-   
+      
 }
 
 
